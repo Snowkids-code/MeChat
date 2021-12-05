@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "889471685408",
+    "firebase_url": "https://chatapp-ec920-default-rtdb.firebaseio.com",
+    "project_id": "chatapp-ec920",
+    "storage_bucket": "chatapp-ec920.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889471685408:android:58f1b5f5bb511f07bf7d45",
+        "android_client_info": {
+          "package_name": "com.phoenix.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889471685408-i49boqo6cvrouo5mhmqddi1bisl89qhl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxGeDBw8mk8vpuY91dMxCbUgx2rW8LCv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889471685408-i49boqo6cvrouo5mhmqddi1bisl89qhl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889471685408:android:77184a5aba478a89bf7d45",
+        "android_client_info": {
+          "package_name": "com.phoenix.mechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889471685408-i49boqo6cvrouo5mhmqddi1bisl89qhl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxGeDBw8mk8vpuY91dMxCbUgx2rW8LCv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889471685408-i49boqo6cvrouo5mhmqddi1bisl89qhl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

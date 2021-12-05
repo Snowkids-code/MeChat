@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MeChat</string>
+    <string name="skip">Skip</string>
+    <string name="mechat">MeChat</string>
+    <string name="search">Search</string>
+    <string name="message">Message</string>
+    <string name="send">Send</string>
+    <string name="logout">LogOut</string>
+    <string name="register">Register</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="name">Name</string>
+</resources>
