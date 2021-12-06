@@ -3,9 +3,11 @@ package com.phoenix.mechat.view.auth.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,11 +28,14 @@ public class LogIn extends AppCompatActivity {
     //xml
     EditText editTextEmailLogin, editTextPassLogin;
     Button buttonLogin;
-    TextView textViewSignUp;
+    TextView textViewSignUp, textViewLogReg, textViewLogTitle;
     ProgressDialog progressDialog;
 
     //Firebase
     FirebaseAuth mAuth;
+
+    //fonts
+    Typeface typefaceSB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,11 @@ public class LogIn extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         initializeViews();
+        fonts();
+    }
+
+    private void fonts() {
+        typefaceSB = ResourcesCompat.getFont(this, R.font.gothic_a1_semi_bold);
     }
 
     private void initializeViews() {
@@ -54,6 +64,9 @@ public class LogIn extends AppCompatActivity {
         editTextPassLogin = findViewById(R.id.editTextPassLogin);
         buttonLogin = findViewById(R.id.buttonLogin);
         textViewSignUp = findViewById(R.id.textViewSignUp);
+        textViewLogReg = findViewById(R.id.textViewLogReg);
+        textViewLogTitle = findViewById(R.id.textViewLogTitle);
+        setFonts();
 
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +85,15 @@ public class LogIn extends AppCompatActivity {
                 login(email, pass);
             }
         });
+    }
+
+    private void setFonts() {
+        editTextEmailLogin.setTypeface(typefaceSB);
+        editTextPassLogin.setTypeface(typefaceSB);
+        buttonLogin.setTypeface(typefaceSB);
+        textViewSignUp.setTypeface(typefaceSB);
+        textViewLogReg.setTypeface(typefaceSB);
+        textViewLogTitle.setTypeface(typefaceSB);
     }
 
     private void login(String email, String pass) {

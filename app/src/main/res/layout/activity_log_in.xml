@@ -19,7 +19,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textViewLogTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Welcome to MeChat, login below to continue" />
@@ -68,7 +68,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewLogReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don't have an account, " />

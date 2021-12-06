@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -53,6 +56,9 @@ public class ChatActivity extends AppCompatActivity {
     ChatModel chatModel;
     String UID;
 
+    //Fonts
+    Typeface typefaceSB, typefaceR;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +80,12 @@ public class ChatActivity extends AppCompatActivity {
         chatModel = new ChatModel();
 
         initializeViews(name);
-        addData(ID);
+        fonts();
+    }
+
+    private void fonts() {
+        typefaceSB = ResourcesCompat.getFont(this, R.font.gothic_a1_semi_bold);
+        typefaceR = ResourcesCompat.getFont(this, R.font.gothic_a1_regular);
     }
 
     private void initializeViews(String name) {
@@ -85,10 +96,17 @@ public class ChatActivity extends AppCompatActivity {
         imageButtonSend.setAlpha(0.0f);
         imageButtonCallChat = findViewById(R.id.imageButtonCallChat);
         imageButtonVideoChat = findViewById(R.id.imageButtonVideoChat);
+        setFont();
         VIButton();
         textViewNameChat.setText(name);
         chatAdapter = new ChatAdapter();
-        listViewChat.setAdapter(chatAdapter);
+
+        addData(ID);
+    }
+
+    private void setFont() {
+        textViewNameChat.setTypeface(typefaceSB);
+        editTextMessage.setTypeface(typefaceR);
     }
 
     private void VIButton() {
@@ -100,14 +118,21 @@ public class ChatActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                imageButtonSend.setAlpha(1.0f);
-                imageButtonSend.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String message = editTextMessage.getText().toString();
-                        sendMessage(message);
-                    }
-                });
+                if (editTextMessage.getText().toString().matches("")){
+                    imageButtonSend.setAlpha(0.0f);
+                }else{
+                    imageButtonSend.setAlpha(1.0f);
+                    imageButtonSend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String message = editTextMessage.getText().toString();
+                            sendMessage(message);
+                            editTextMessage.setText("");
+                            editTextMessage.setHint("Message");
+                        }
+                    });
+                }
+
             }
 
             @Override
@@ -138,6 +163,7 @@ public class ChatActivity extends AppCompatActivity {
                 assert value != null;
                 arrayListSent.add(value.getSent());
                 arrayListReceived.add(value.getReceived());
+                listViewChat.setAdapter(chatAdapter);
             }
 
             @Override
@@ -175,7 +201,7 @@ public class ChatActivity extends AppCompatActivity {
         DatabaseReference bRef = reference.child(UID + "-" + ID);
         DatabaseReference pRef = bRef.push();
         pRef.setValue(chatModel);
-        addData(ID);
+//        addData(ID);
 
         //second node
         secondNode(message);
@@ -192,7 +218,9 @@ public class ChatActivity extends AppCompatActivity {
         DatabaseReference bRef = reference.child(ID + "-" + UID);
         DatabaseReference pRef = bRef.push();
         pRef.setValue(chatModel);
-        addData(ID);
+
+        //imageButton invisible
+        imageButtonSend.setAlpha(0.0f);
 
     }
 
@@ -220,9 +248,11 @@ public class ChatActivity extends AppCompatActivity {
             //TextView received
             TextView textViewReceived = view.findViewById(R.id.textViewReceived);
             textViewReceived.setText(arrayListReceived.get(i));
+            textViewReceived.setTypeface(typefaceR);
             //textView sent
             TextView textViewSent = view.findViewById(R.id.textViewSent);
             textViewSent.setText(arrayListSent.get(i));
+            textViewSent.setTypeface(typefaceR);
             if (arrayListReceived.get(i).equals("")){
                 textViewReceived.setHeight(5);
                 textViewReceived.setAlpha(0.0f);

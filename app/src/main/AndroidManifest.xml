@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.phoenix.mechat">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeChat">
         <activity
+            android:name=".view.account.ui.UploadImage"
+            android:exported="false" />
+        <activity
             android:name=".view.chat.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".view.account.Account"
+            android:name=".view.account.ui.Account"
             android:exported="false" />
         <activity
             android:name=".view.call.CallActivity"

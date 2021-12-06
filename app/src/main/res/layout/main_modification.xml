@@ -40,18 +40,18 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="TextView" />
+                android:text="TextView"
+                android:layout_marginTop="20dp"/>
 
             <TextView
                 android:id="@+id/textViewMainContent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="0dp"/>
 
             <TextView
                 android:id="@+id/textViewID"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="0dp" />
         </LinearLayout>
     </LinearLayout>
 

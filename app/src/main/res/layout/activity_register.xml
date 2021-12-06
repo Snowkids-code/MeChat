@@ -19,7 +19,7 @@
             android:paddingBottom="10dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textViewRegTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Welcome to MeChat, follow the simple registration steps to get started"
@@ -89,7 +89,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewRegLog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Already have an account, " />

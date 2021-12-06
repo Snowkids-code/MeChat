@@ -3,9 +3,11 @@ package com.phoenix.mechat.view.auth.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -32,12 +34,15 @@ public class Register extends AppCompatActivity {
     EditText editTextUserPhone, editTextConfirmCode, editTextNameReg;
     Button buttonRegister;
     ProgressDialog progressDialog;
-    TextView textViewSignIn;
+    TextView textViewSignIn, textViewRegTitle, textViewRegLog;
 
     //firebase
     private FirebaseAuth mAuth;
     AuthModel authModel;
     Handler handler;
+
+    //fonts
+    Typeface typefaceSB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +53,16 @@ public class Register extends AppCompatActivity {
         actionBar.hide();
         setContentView(R.layout.activity_register);
         initializeViews();
+        fonts();
         //initialize firebase Auth
         mAuth = FirebaseAuth.getInstance();
         authModel = new AuthModel();
         progressDialog = new ProgressDialog(this);
         handler = new Handler();
+    }
+
+    private void fonts() {
+        typefaceSB = ResourcesCompat.getFont(this, R.font.gothic_a1_semi_bold);
     }
 
     private void initializeViews() {
@@ -61,6 +71,9 @@ public class Register extends AppCompatActivity {
         buttonRegister = findViewById(R.id.buttonRegister);
         textViewSignIn = findViewById(R.id.textViewSignIn);
         editTextNameReg = findViewById(R.id.editTextNameReg);
+        textViewRegTitle = findViewById(R.id.textViewRegTitle);
+        textViewRegLog = findViewById(R.id.textViewRegLog);
+        setFonts();
 
         textViewSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +89,17 @@ public class Register extends AppCompatActivity {
                 progressDialog.show();
             }
         });
+    }
+
+    private void setFonts() {
+        editTextUserPhone.setTypeface(typefaceSB);
+        editTextConfirmCode.setTypeface(typefaceSB);
+        buttonRegister.setTypeface(typefaceSB);
+        textViewSignIn.setTypeface(typefaceSB);
+        editTextNameReg.setTypeface(typefaceSB);
+        textViewRegTitle.setTypeface(typefaceSB);
+        textViewRegLog.setTypeface(typefaceSB);
+
     }
 
     //check to see if user is signed in
@@ -173,6 +197,28 @@ public class Register extends AppCompatActivity {
         DatabaseReference gUsers = databaseReference.child("Users");
         DatabaseReference pUsers = gUsers.child(PushID);
         pUsers.setValue(authModel);
+        //push data to userFriends
+        userFriends(PushID);
+
+    }
+
+    private void userFriends(String pushID) {
+        //initialize DatabaseR
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        //Get current userUID
+        FirebaseUser user = mAuth.getCurrentUser();
+        assert user != null;
+        String UID = user.getUid();
+
+        //setters
+        authModel.setEmail("email");
+        authModel.setUID("UID");
+        authModel.setName("Search to add friends and start chatting");
+        authModel.setImageURL("h");
+
+        DatabaseReference fUsers = databaseReference.child(UID + "F");
+        DatabaseReference finalUsers = fUsers.child(pushID);
+        finalUsers.setValue(authModel);
         nextActivity(UID);
     }
 

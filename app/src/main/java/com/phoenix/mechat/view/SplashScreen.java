@@ -2,9 +2,11 @@ package com.phoenix.mechat.view;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -30,6 +32,9 @@ public class SplashScreen extends AppCompatActivity {
     //Firebase
     FirebaseAuth mAuth;
 
+    //Fonts
+    Typeface typeface;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,10 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         initializeViews();
+
+        //fonts
+        typeface = ResourcesCompat.getFont(this, R.font.gothic_a1_regular);
+
         mAuth = FirebaseAuth.getInstance();
         addImages();
         setAdapters();
@@ -52,6 +61,7 @@ public class SplashScreen extends AppCompatActivity {
     private void initializeViews() {
         textViewSkip = findViewById(R.id.textViewSkip);
         viewPagerSplash = findViewById(R.id.viewPagerSplash);
+        textViewSkip.setTypeface(typeface);
         addClick();
     }
 

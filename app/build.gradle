@@ -58,7 +58,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
 
     //Firebase SDK to connect to the database
-    implementation 'com.google.firebase:firebase-database:20.0.2'
+    implementation 'com.google.firebase:firebase-database:20.0.3'
+
+    //Firebase Sdk to connect to storage
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

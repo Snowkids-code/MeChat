@@ -1,6 +1,7 @@
 package com.phoenix.mechat.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.phoenix.mechat.R;
@@ -20,6 +22,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private final ArrayList<Integer> arrayList;
     private final ArrayList<String> arrayListH = new ArrayList<>();
     private final ArrayList<String> arrayListC = new ArrayList<>();
+
+    //Fonts
+    Typeface typeface;
 
     //constructor
     public MyAdapter(Context context, ArrayList<Integer> arrayList){
@@ -59,12 +64,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         //xml elements
         ImageView imageViewSplash;
         TextView textViewSplashH, textViewSplashC;
+        //Fonts
+        Typeface typeface, typeface1;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageViewSplash = itemView.findViewById(R.id.imageViewSplash);
             textViewSplashH = itemView.findViewById(R.id.textViewSplashH);
             textViewSplashC = itemView.findViewById(R.id.textViewSplashC);
+            //set fonts
+            typeface = ResourcesCompat.getFont(itemView.getContext(), R.font.gothic_a1_bold);
+            typeface1 = ResourcesCompat.getFont(itemView.getContext(), R.font.gothic_a1_regular);
+
+            //setFonts
+            textViewSplashH.setTypeface(typeface);
+            textViewSplashC.setTypeface(typeface1);
         }
     }
 

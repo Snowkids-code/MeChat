@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.phoenix.mechat.R;
-import com.phoenix.mechat.view.account.Account;
+import com.phoenix.mechat.view.account.ui.Account;
 import com.phoenix.mechat.view.dashboard.ui.MainActivity;
 
 public class CallActivity extends AppCompatActivity {
