@@ -39,7 +39,7 @@ import com.phoenix.mechat.R;
 import com.phoenix.mechat.view.account.ui.Account;
 import com.phoenix.mechat.view.auth.ui.Register;
 import com.phoenix.mechat.view.call.CallActivity;
-import com.phoenix.mechat.view.chat.ChatActivity;
+import com.phoenix.mechat.view.chat.ui.ChatActivity;
 import com.phoenix.mechat.view.dashboard.model.MainModel;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;

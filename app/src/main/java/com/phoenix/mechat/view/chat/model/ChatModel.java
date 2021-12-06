@@ -4,14 +4,18 @@ public class ChatModel {
 
     String Sent;
     String Received;
+    String ImageSent;
+    String ImageReceived;
 
     public ChatModel(){
 
     }
 
-    public ChatModel(String sent, String received) {
+    public ChatModel(String sent, String received, String imageSent, String imageReceived) {
         Sent = sent;
         Received = received;
+        ImageSent = imageSent;
+        ImageReceived = imageReceived;
     }
 
     public String getSent() {
@@ -28,5 +32,21 @@ public class ChatModel {
 
     public void setReceived(String received) {
         Received = received;
+    }
+
+    public String getImageSent() {
+        return ImageSent;
+    }
+
+    public void setImageSent(String imageSent) {
+        ImageSent = imageSent;
+    }
+
+    public String getImageReceived() {
+        return ImageReceived;
+    }
+
+    public void setImageReceived(String imageReceived) {
+        ImageReceived = imageReceived;
     }
 }

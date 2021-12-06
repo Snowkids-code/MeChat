@@ -20,16 +20,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private Context context;
     private final ArrayList<Integer> arrayList;
-    private final ArrayList<String> arrayListH = new ArrayList<>();
-    private final ArrayList<String> arrayListC = new ArrayList<>();
+    private ArrayList<String> arrayListH = new ArrayList<>();
+    private ArrayList<String> arrayListC = new ArrayList<>();
 
     //Fonts
     Typeface typeface;
 
     //constructor
-    public MyAdapter(Context context, ArrayList<Integer> arrayList){
+    public MyAdapter(Context context, ArrayList<Integer> arrayList, ArrayList<String> arrayListSH, ArrayList<String> arrayListSC){
         this.context = context;
         this.arrayList = arrayList;
+        this.arrayListH = arrayListSH;
+        this.arrayListC = arrayListSC;
     }
 
     //inflate with the custom layout
@@ -44,8 +46,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         //add content
-        arrayListH.add("Talk to those most special to you");
-        arrayListC.add("Keep the connection with those that matter most in your life");
+//        arrayListH.add("Talk to those most special to you");
+//        arrayListC.add("Keep the connection with those that matter most in your life");
 
         holder.imageViewSplash.setImageResource(arrayList.get(position));
         holder.textViewSplashH.setText(arrayListH.get(position));

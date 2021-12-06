@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.chat.ChatActivity">
+    tools:context=".view.chat.ui.ChatActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -135,9 +135,18 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_weight="0.3"
             android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imageButtonAttach"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_attach_file"
+                tools:ignore="NestedWeights"
+                android:background="@color/white"/>
 
             <ImageButton
                 android:id="@+id/imageButtonSend"

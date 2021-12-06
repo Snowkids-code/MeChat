@@ -28,6 +28,8 @@ public class SplashScreen extends AppCompatActivity {
 
     //Adapter
     ArrayList<Integer> arrayList = new ArrayList<>();
+    private final ArrayList<String> arrayListH = new ArrayList<>();
+    private final ArrayList<String> arrayListC = new ArrayList<>();
     MyAdapter myAdapter;
     //Firebase
     FirebaseAuth mAuth;
@@ -78,10 +80,16 @@ public class SplashScreen extends AppCompatActivity {
         arrayList.add(R.drawable.ic_chats);
         arrayList.add(R.drawable.ic_conversation);
         arrayList.add(R.drawable.ic_security);
+        arrayListH.add("Talk to those most special to you");
+        arrayListH.add("Share a moment with those nearby");
+        arrayListH.add("Enjoy top quality security for your chat");
+        arrayListC.add("Keep the connection with those that matter most in your life");
+        arrayListC.add("Meet and share idea with others");
+        arrayListC.add("Keep texting without the worry of who is reading your conversation");
     }
 
     private void setAdapters(){
-        myAdapter = new MyAdapter(this, arrayList);
+        myAdapter = new MyAdapter(this, arrayList, arrayListH, arrayListC);
         viewPagerSplash.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         viewPagerSplash.setAdapter(myAdapter);
     }
